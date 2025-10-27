@@ -10,7 +10,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://rida-server-qaj19plou-khalid-saifullahas-projects.vercel.app/",
+      "https://rida-server-qaj19plou-khalid-saifullahas-projects.vercel.app",
     ],
     credentials: true,
   })

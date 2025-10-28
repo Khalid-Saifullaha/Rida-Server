@@ -6,7 +6,6 @@ let server: Server;
 const port = process.env.PORT || 3000;
 const startServer = async () => {
   try {
-    // const uri = "mongodb://localhost:27017/ride-management-system";
     const uri = envVars.DB_URL;
     if (!uri) {
       throw new Error("Database URL is not defined in environment variables.");

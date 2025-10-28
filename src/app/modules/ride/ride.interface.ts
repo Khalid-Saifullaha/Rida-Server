@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Document, Types } from "mongoose";
+import { Types } from "mongoose";
 export enum RideStatus {
   requested = "requested",
   accepted = "accepted",

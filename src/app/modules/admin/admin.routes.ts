@@ -12,6 +12,11 @@ router.patch(
   adminController.changeBlockStatus
 );
 router.patch(
+  "/change-online-status/:userId",
+  checkAuth(ROLE.admin),
+  adminController.changeOnlineStatus
+);
+router.patch(
   "/rides/:id/cancel",
   checkAuth(ROLE.admin),
   adminController.cancelRide
@@ -30,6 +35,11 @@ router.patch(
   "/reject-driver/:id",
   checkAuth(ROLE.admin),
   adminController.rejectDriver
+);
+router.get(
+  "/earnings-stats",
+  checkAuth(ROLE.admin),
+  adminController.getEarningsStats
 );
 
 export const AdminRoutes = router;

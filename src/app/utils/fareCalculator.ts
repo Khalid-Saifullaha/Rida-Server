@@ -21,7 +21,10 @@ export const calculateDistance = (
   return distance; // km
 };
 
-export const calculateFare = (pickupCoords: number[], destinationCoords: number[]) => {
+export const calculateFare = (
+  pickupCoords: number[],
+  destinationCoords: number[]
+) => {
   const baseFare = 50;
   const ratePerKm = 25;
 

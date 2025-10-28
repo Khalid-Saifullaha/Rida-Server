@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from "express";
 import httpStatus from "http-status-codes";
 import { catchAsync } from "../../utils/catchAsync";
@@ -12,6 +13,18 @@ const changeBlockStatus = catchAsync(async (req: Request, res: Response) => {
     statusCode: httpStatus.CREATED,
     data: result,
     message: "Changed block status",
+  });
+});
+const changeOnlineStatus = catchAsync(async (req: Request, res: Response) => {
+  const userId = req.params.userId;
+  const result = await adminServices.changeOnlineStatus(userId);
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.CREATED,
+    data: result,
+    message: `User ${
+      result?.isOnline ? "online" : "offline"
+    } status updated successfully`,
   });
 });
 
@@ -77,12 +90,25 @@ const getPendingApprovals = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getEarningsStats = catchAsync(async (req: Request, res: Response) => {
+  const { timeRange = "monthly" } = req.query;
+
+  const stats = await adminServices.getEarningsStats(timeRange as any);
+
+  res.send({
+    success: true,
+    message: "Earnings stats fetched successfully",
+    data: stats,
+  });
+});
 export const adminController = {
   changeBlockStatus,
+  changeOnlineStatus,
   approveDriver,
   getAllUser,
   getAllRide,
   cancelRide,
   getPendingApprovals,
   rejectDriver,
+  getEarningsStats,
 };

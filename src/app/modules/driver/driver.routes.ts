@@ -9,6 +9,7 @@ router.get(
   checkAuth(ROLE.driver),
   DriverController.getDriverEarningsHistory
 );
+
 router.get(
   "/driver-ride-history",
   checkAuth(ROLE.driver),
@@ -18,5 +19,10 @@ router.patch(
   "/request-approval",
   checkAuth(ROLE.driver),
   DriverController.requestApproval
+);
+router.get(
+  "/earnings-stats",
+  checkAuth(ROLE.driver),
+  DriverController.getDriverEarningsStats
 );
 export const DriverRoutes = router;
